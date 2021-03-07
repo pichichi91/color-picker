@@ -77,12 +77,16 @@ function App() {
           load();
 
         }} />
+        <div>
+          {imageUrl && <img id="logo" className="App-logo" src={imageUrl} alt="logo" />}
+
+        </div>
+
         <button
 
         > Generate Palette</button>
       </form>
 
-      { imageUrl && <img id="logo" className="App-logo" src={imageUrl} alt="logo" />}
 
       <div className="colorBox">
         <div className="colorWrapper">
