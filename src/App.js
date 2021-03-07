@@ -68,7 +68,7 @@ function App() {
       ); // per ITU-R BT.709c
 
 
-      const isDark = luma < 30;
+      const isDark = luma < 70;
 
 
 
