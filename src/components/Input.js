@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyledButton, StyledForm, StyledInput, LoadedImage } from "./Styles"
 
 export default function Input({ load, getPalette, setPalette }) {

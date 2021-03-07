@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react"
 import './App.css';
 import ColorThief from '../node_modules/colorthief/dist/color-thief.mjs'
-import { Container, Info } from "./components/Styles"
+import { Container } from "./components/Styles"
 import ColorDisplay from "./components/ColorDisplay"
 import Input from "./components/Input"
 
