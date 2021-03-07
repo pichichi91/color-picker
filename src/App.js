@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react"
 import './App.css';
 import ColorThief from '../node_modules/colorthief/dist/color-thief.mjs'
-
+import { Container, Info } from "./components/Styles"
+import ColorDisplay from "./components/ColorDisplay"
+import Input from "./components/Input"
 
 function App() {
-
-  const [imageUrl, setImageUrl] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Boca_Juniors_logo18.svg/1200px-Boca_Juniors_logo18.svg.png");
   const [palette, setPalette] = useState([]);
   const [colors, setColors] = useState([]);
-
 
   // eslint-disable-next-line
   const colorThief = new ColorThief();
@@ -20,12 +19,20 @@ function App() {
     if (img !== null) {
 
       img.setAttribute('crossOrigin', '');
+      console.log(img)
+      if (img.width > 0 && img.height > 0) {
+        try {
+          const retrievedPalette = colorThief.getPalette(img)
+          if (retrievedPalette !== undefined) {
+            setPalette(retrievedPalette);
+          }
+        } catch (error) {
+          console.log(error);
+        }
 
-      const retrievedPalette = colorThief.getPalette(img)
-      if (retrievedPalette !== undefined) {
-        console.log("retrievedPalette: " + retrievedPalette);
-        setPalette(retrievedPalette);
+
       }
+
     }
 
   }
@@ -37,71 +44,50 @@ function App() {
       if (img.complete) {
         const retrievedPalette = colorThief.getPalette(img)
         if (retrievedPalette !== undefined) {
-          console.log("getPalette: " + retrievedPalette);
           setPalette(retrievedPalette);
         }
       }
     }
   }, [colorThief])
 
-  useEffect(() => {
-    const img = document.querySelector('#logo');
-    const retrievedPalette = getPalette(img);
-    if (retrievedPalette !== undefined) {
-      console.log("useEffect: " + retrievedPalette);
-      setPalette(retrievedPalette);
-    }
-    // eslint-disable-next-line
-  }, [imageUrl])
+
 
   useEffect(() => {
     const colors = palette && palette.map((color) => {
-      const decimalCode = color[0] * 65536 + color[1] * 256 + color[2];
-      const heximalCode = "#" + decimalCode.toString(16).toUpperCase()
-      return heximalCode
+
+      const [red, green, blue] = color
+
+      const decimalCode = red * 65536 + green * 256 + blue;
+      const heximalCode = "#" + decimalCode.toString(16).toUpperCase().padStart(6, "0")
+
+
+      const luma = Math.sqrt(
+        0.299 * (red * red) +
+        0.587 * (green * green) +
+        0.114 * (blue * blue)
+      ); // per ITU-R BT.709c
+
+
+      const isDark = luma < 30;
+
+
+
+      return { red: red, green: green, blue: blue, hex: heximalCode, luma: luma, isDark: isDark }
     })
     setColors(colors)
   }, [palette])
 
 
   return (
-    <div className="App">
+    <Container>
       <h1>Color Picker</h1>
-      <form onSubmit={(event) => {
-        event.preventDefault();
-        load();
-      }}>
-        <input type="text" onLoad={load} value={imageUrl} onChange={(event) => {
-          setImageUrl(event.target.value)
-          setPalette([])
-          load();
+      <Input load={load} setPalette={setPalette} getPalette={getPalette} />
+      { palette.length > 0 && <ColorDisplay colors={colors} />}
 
-        }} />
-        <div>
-          {imageUrl && <img id="logo" className="App-logo" src={imageUrl} alt="logo" />}
-
-        </div>
-
-        <button
-
-        > Generate Palette</button>
-      </form>
-
-
-      <div className="colorBox">
-        <div className="colorWrapper">
-
-
-          {colors && colors.map((color, index) => (
-            <div className="colorDisplay" style={{ backgroundColor: color }}>
-              {color}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div >
+    </Container >
   );
 }
+
 
 
 export default App;
