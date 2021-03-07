@@ -6,6 +6,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
+
+  background: #8080802e;
 }
 
 h1 {
