@@ -10,7 +10,7 @@ function App() {
   const [colors, setColors] = useState([]);
 
 
-
+  // eslint-disable-next-line
   const colorThief = new ColorThief();
 
 
@@ -51,7 +51,7 @@ function App() {
       console.log("useEffect: " + retrievedPalette);
       setPalette(retrievedPalette);
     }
-
+    // eslint-disable-next-line
   }, [imageUrl])
 
   useEffect(() => {
