@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react"
 import './App.css';
-
 import ColorThief from '../node_modules/colorthief/dist/color-thief.mjs'
 
 
@@ -67,8 +66,7 @@ function App() {
 
   return (
     <div className="App">
-
-
+      <h1>Color Picker</h1>
       <form onSubmit={(event) => {
         event.preventDefault();
         load();
@@ -84,7 +82,7 @@ function App() {
         > Generate Palette</button>
       </form>
 
-      {imageUrl && <img id="logo" className="App-logo" src={imageUrl} alt="logo" />}
+      { imageUrl && <img id="logo" className="App-logo" src={imageUrl} alt="logo" />}
 
       <div className="colorBox">
         <div className="colorWrapper">
@@ -97,7 +95,7 @@ function App() {
           ))}
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
