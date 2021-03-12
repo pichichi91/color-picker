@@ -32,7 +32,7 @@ const StyledColorDisplay = styled.div`
   font-size: 1.2em;
   font-weight: bold;
   color:  ${(props) => props.color.isDark ? "white" : "black"};
-  width: ${(props) => props.color.percentage}%;
+  width: ${(props) => props.color.percentage * 0.9}%;
   min-width: 14%;
 
 
