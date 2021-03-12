@@ -16,8 +16,8 @@ const StyledColorWrapper = styled.div`
   margin-top: 2em;
   border-top: 10px solid #8080802e;
   border-bottom: 10px solid #8080802e;
-  justify-content: space-evenly;
-  @media screen and (max-width: 768px) {
+  justify-content: flex-start;
+    @media screen and (max-width: 768px) {
     width: 90%;
     flex-direction: column;
   }
@@ -35,11 +35,13 @@ const StyledColorDisplay = styled.div`
   color:  ${(props) => props.color.isDark ? "white" : "black"};
   width: ${(props) => props.color.percentage * 0.9}%;
   min-width: 14%;
+  margin-right: 1em;
 
   @media screen and (max-width: 768px) {
     width: ${(props) => props.color.percentage * 1.5}%;
     max-width: 100%;
     min-width: 29%;
+    margin-right: 0em;
 
   }
 
