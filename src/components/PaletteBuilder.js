@@ -86,10 +86,15 @@ const usePalette = (setPixels, imageUrl, setIsLoading) => {
     useEffect(() => {
 
         setPixels([])
-        var canvas = document.getElementById("myCanvas");
+
+        const canvas = document.getElementById("myCanvas");
+        canvas.width = window.innerWidth * 0.9;
+        canvas.height = window.innerHeight * 0.9;
         const context = canvas.getContext('2d');
         const image = document.querySelector('#logo')
         context.clearRect(0, 0, canvas.width, canvas.height);
+
+
 
 
         if (image) {

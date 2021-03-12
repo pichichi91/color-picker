@@ -17,8 +17,9 @@ const StyledColorWrapper = styled.div`
   border-top: 10px solid #8080802e;
   border-bottom: 10px solid #8080802e;
   justify-content: space-evenly;
-    @media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     width: 90%;
+    flex-direction: column;
   }
 
 
@@ -34,6 +35,14 @@ const StyledColorDisplay = styled.div`
   color:  ${(props) => props.color.isDark ? "white" : "black"};
   width: ${(props) => props.color.percentage * 0.9}%;
   min-width: 14%;
+
+  @media screen and (max-width: 768px) {
+    width: ${(props) => props.color.percentage * 1.5}%;
+    max-width: 100%;
+    min-width: 28%;
+
+  }
+
 
 
 
@@ -147,10 +156,7 @@ strong {
 const Canvas = styled.div`
 canvas {
   overflow: hidden;
-  @media screen and (max-width: 768px) {
-    margin-left: -25%;
 
-  }
 }
   margin-top: 3em;
   width: 100%;
