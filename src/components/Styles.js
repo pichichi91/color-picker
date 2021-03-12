@@ -127,5 +127,19 @@ const PercentageBox = styled.div`
 font-size: 0.5em;
 `
 
+const ToastWrapper = styled.div`
+    font-family: "Montserrat", sans-serif;
+.Toastify__toast {
+  border-radius: 12px;
+    padding: 0.7em;
+    min-height: 40px;
+    font-size: 1.2em;
+}
+strong {
+  color: #073D7A;
+  
+}
+`
 
-export { PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
+
+export { ToastWrapper, PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
