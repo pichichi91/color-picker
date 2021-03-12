@@ -18,7 +18,7 @@ export default function ColorDisplay({ colors, }) {
 
                             {colors && colors.map((color, index) => {
                                 return (
-                                    <StyledColorDisplay key={index} color={color} onClick={(event) => navigator.clipboard.writeText(event.currentTarget.textContent)} >
+                                    <StyledColorDisplay key={index} color={color} onClick={(event) => navigator.clipboard.writeText(event.currentTarget.textContent.substring(0, 7))} >
                                         <div>
                                             <div>{color.hex}</div>
                                             <PercentageBox>{color.percentage} %</PercentageBox>
