@@ -39,7 +39,7 @@ const StyledColorDisplay = styled.div`
   @media screen and (max-width: 768px) {
     width: ${(props) => props.color.percentage * 1.5}%;
     max-width: 100%;
-    min-width: 28%;
+    min-width: 29%;
 
   }
 
