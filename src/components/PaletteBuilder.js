@@ -39,7 +39,8 @@ const calculateResults = (pixels, width, pixelCounter) => {
         if (count > width / 2) {
             const [red, green, blue] = key.split("-")
             const heximalCode = RGBToHex(red, green, blue)
-            results.push({ hex: heximalCode, isDark: isDark(red, green, blue), percentage: (100 / pixelCounter) * count })
+            const percentage = ((100 / pixelCounter) * count).toFixed(2)
+            results.push({ hex: heximalCode, isDark: isDark(red, green, blue), percentage: percentage })
 
         }
     }
@@ -79,15 +80,20 @@ const loopOverPixels = (width, height, context) => {
 
 }
 
-const usePalette = (setPixels, imageUrl) => {
+const usePalette = (setPixels, imageUrl, setIsLoading) => {
+
 
     useEffect(() => {
+
         setPixels([])
         var canvas = document.getElementById("myCanvas");
         const context = canvas.getContext('2d');
         const image = document.querySelector('#logo')
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
 
         if (image) {
+            image.src = "";
             image.setAttribute('crossOrigin', '');
             image.src = imageUrl;
 
@@ -115,6 +121,8 @@ const usePalette = (setPixels, imageUrl) => {
 
 
         }
+        setIsLoading(false)
+
 
     }, [imageUrl, setPixels])
 
