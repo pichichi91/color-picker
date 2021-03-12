@@ -13,13 +13,14 @@ const StyledColorWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   padding-top: 2em;
-margin-top: 2em;
+  margin-top: 2em;
   border-top: 10px solid #8080802e;
   border-bottom: 10px solid #8080802e;
-
-  @media screen and (max-width: 768px) {
+  justify-content: space-evenly;
+    @media screen and (max-width: 768px) {
     width: 90%;
   }
+
 
 `
 
@@ -28,12 +29,14 @@ const StyledColorDisplay = styled.div`
   padding: 0.5em;
   border: 0px solid ${(props) => props.color.isDark ? "white" : "black"};
   margin-bottom: 1em;
-  margin-right: 1em;
   font-size: 1.2em;
   font-weight: bold;
   color:  ${(props) => props.color.isDark ? "white" : "black"};
   width: ${(props) => props.color.percentage * 0.9}%;
   min-width: 14%;
+
+
+
 
 
   border-radius: 10px;
