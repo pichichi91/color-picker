@@ -99,10 +99,22 @@ const LoadedImage = styled.img`
   height: 20vmin;
   pointer-events: none;
   margin-top: 1em;
+  display: none;
+
   @media screen and (max-width: 768px) {
     height: 30vmin;
 
 }
 `
 
-export { LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
+const InfoBox = styled.div`
+
+background-color: #3f51b529;
+    margin: 2em;
+    padding: 2em;
+    box-sizing: border-box;
+    border: 1px so;
+    box-shadow: 10px 10px 0px 0px #000000ab;
+`
+
+export { InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };

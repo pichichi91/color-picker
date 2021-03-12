@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Container, InfoBox } from "./components/Styles"
 import ColorDisplay from "./components/ColorDisplay"
 import Input from "./components/Input"
@@ -7,8 +7,9 @@ function App() {
 
   const [pixels, setPixels] = useState([])
 
-  const [imageUrl, setImageUrl] = useState("https://brandslogo.net/wp-content/uploads/2018/10/new-fc-barcelona-logo.png");
+  const [imageUrl, setImageUrl] = useState("https://upload.wikimedia.org/wikipedia/de/thumb/a/aa/Fc_barcelona.svg/559px-Fc_barcelona.svg.png");
   usePalette(setPixels)
+
 
 
   return (

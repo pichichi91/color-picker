@@ -7,28 +7,26 @@ export default function ColorDisplay({ colors }) {
     const animation = useSpring({ opacity: 1, from: { opacity: 0 } })
 
     return (
-        <animated.div style={animation}>
-            <StyledColorBox className="colorBox">
+        <div style={{ width: "90%" }}>
 
-                <StyledColorWrapper className="colorWrapper">
+            <animated.div style={animation}>
+                <StyledColorBox className="colorBox">
+                    <StyledColorWrapper className="colorWrapper">
+                        {colors && colors.map((color, index) => {
+                            return (
+                                <StyledColorDisplay key={index} color={color} onClick={(event) => navigator.clipboard.writeText(event.currentTarget.textContent)} >
+                                    {color.hex}
+                                </StyledColorDisplay>
+                            )
+                        })}
 
-                    {colors && colors.map((color, index) => {
+                    </StyledColorWrapper>
 
-                        console.log(color)
-                        return (
+                </StyledColorBox>
+                <Info >  ... click on the color to copy it to the clipboard </Info >
 
-                            <StyledColorDisplay key={index} color={color} onClick={(event) => navigator.clipboard.writeText(event.currentTarget.textContent)} >
+            </animated.div>
+        </div>
 
-                                {color.hex}
-                            </StyledColorDisplay>
-                        )
-                    })}
-
-                </StyledColorWrapper>
-
-            </StyledColorBox>
-            <Info >  ... click on the color to copy it to the clipboard </Info >
-
-        </animated.div>
     );
 }
