@@ -1,87 +1,29 @@
-import React, { useCallback, useEffect, useState } from "react"
-import ColorThief from '../node_modules/colorthief/dist/color-thief.mjs'
-import { Container } from "./components/Styles"
+import React, { useState } from "react"
+import { Container, InfoBox } from "./components/Styles"
 import ColorDisplay from "./components/ColorDisplay"
 import Input from "./components/Input"
-
+import { usePalette } from "./components/PaletteBuilder"
 function App() {
-  const [palette, setPalette] = useState([]);
-  const [colors, setColors] = useState([]);
 
-  // eslint-disable-next-line
-  const colorThief = new ColorThief();
+  const [pixels, setPixels] = useState([])
 
-
-
-  function load() {
-    const img = document.querySelector('#logo');
-    if (img !== null) {
-
-      img.setAttribute('crossOrigin', '');
-      console.log(img)
-      if (img.width > 0 && img.height > 0) {
-        try {
-          const retrievedPalette = colorThief.getPalette(img)
-          if (retrievedPalette !== undefined) {
-            setPalette(retrievedPalette);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-
-
-      }
-
-    }
-
-  }
-
-
-  const getPalette = useCallback((img) => {
-    if (img != null) {
-      img.setAttribute('crossOrigin', '');
-      if (img.complete) {
-        const retrievedPalette = colorThief.getPalette(img)
-        if (retrievedPalette !== undefined) {
-          setPalette(retrievedPalette);
-        }
-      }
-    }
-  }, [colorThief])
-
-
-
-  useEffect(() => {
-    const colors = palette && palette.map((color) => {
-
-      const [red, green, blue] = color
-
-      const decimalCode = red * 65536 + green * 256 + blue;
-      const heximalCode = "#" + decimalCode.toString(16).toUpperCase().padStart(6, "0")
-
-
-      const luma = Math.sqrt(
-        0.299 * (red * red) +
-        0.587 * (green * green) +
-        0.114 * (blue * blue)
-      ); // per ITU-R BT.709c
-
-
-      const isDark = luma < 70;
-
-
-
-      return { red: red, green: green, blue: blue, hex: heximalCode, luma: luma, isDark: isDark }
-    })
-    setColors(colors)
-  }, [palette])
+  const [imageUrl, setImageUrl] = useState("https://brandslogo.net/wp-content/uploads/2018/10/new-fc-barcelona-logo.png");
+  usePalette(setPixels)
 
 
   return (
     <Container>
       <h1>Color Picker</h1>
-      <Input load={load} setPalette={setPalette} getPalette={getPalette} />
-      { palette.length > 0 && <ColorDisplay colors={colors} />}
+      <Input imageUrl={imageUrl} setImageUrl={setImageUrl} />
+
+      {!imageUrl && <InfoBox>
+        <p>Do you want see the color palette of your own picture / logo? Just add the link above!</p>
+        <p>Images that don't have <strong> 'Access-Control-Allow-Origin' </strong> headers might not be supported (yet)</p>
+
+      </InfoBox>}
+
+      <canvas style={{ marginTop: "3em" }} id="myCanvas" width="800" height="400"></canvas>
+      { pixels.length > 0 && <ColorDisplay colors={pixels} />}
 
     </Container >
   );
