@@ -123,7 +123,7 @@ const usePalette = (setPixels, imageUrl, setIsLoading) => {
         }
         setIsLoading(false)
 
-
+        // eslint-disable-next-line
     }, [imageUrl, setPixels])
 
 }
