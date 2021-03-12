@@ -144,5 +144,21 @@ strong {
 }
 `
 
+const Canvas = styled.div`
+canvas {
+  overflow: hidden;
+  @media screen and (max-width: 768px) {
+    margin-left: -25%;
 
-export { ToastWrapper, PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
+  }
+}
+  margin-top: 3em;
+  width: 100%;
+  height: 95%;
+  overflow-x:hidden;
+
+
+`
+
+
+export { Canvas, ToastWrapper, PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
