@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyledForm, StyledInput, LoadedImage } from "./Styles"
 
-export default function Input({ load, imageUrl, setImageUrl }) {
+export default function Input({ load, imageUrl, setImageUrl, setIsLoading }) {
 
     function onCreatePalette(event) {
         setImageUrl(event.target.value)
+        setIsLoading(true)
     }
 
     return (

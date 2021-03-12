@@ -11,10 +11,9 @@ const StyledColorWrapper = styled.div`
   display: flex;
   width: 80%;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 3em;
+  flex-direction: row;
   padding-top: 2em;
-
+margin-top: 2em;
   border-top: 10px solid #8080802e;
   border-bottom: 10px solid #8080802e;
 
@@ -26,13 +25,17 @@ const StyledColorWrapper = styled.div`
 
 const StyledColorDisplay = styled.div`
   background-color: ${(props) => props.color.hex};
-  padding: 1em;
+  padding: 0.5em;
   border: 0px solid ${(props) => props.color.isDark ? "white" : "black"};
   margin-bottom: 1em;
   margin-right: 1em;
   font-size: 1.3em;
   font-weight: bold;
   color:  ${(props) => props.color.isDark ? "white" : "black"};
+  width: ${(props) => props.color.percentage * 0.9}%;
+  min-width: 14%;
+
+
   border-radius: 10px;
   :hover{
          box-shadow: 0px 1px 20px 0px ${(props) => props.color.hex};
@@ -115,6 +118,14 @@ background-color: #3f51b529;
     box-sizing: border-box;
     border: 1px so;
     box-shadow: 10px 10px 0px 0px #000000ab;
+    max-width: 400px;
 `
 
-export { InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
+
+
+const PercentageBox = styled.div`
+font-size: 0.5em;
+`
+
+
+export { PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
