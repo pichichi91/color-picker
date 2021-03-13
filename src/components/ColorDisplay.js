@@ -5,7 +5,14 @@ import { StyledColorWrapper, StyledColorDisplay, StyledColorBox, Info, Percentag
 import { useSpring, animated } from 'react-spring'
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function ColorDisplay({ colors, }) {
+export default function ColorDisplay({ colors }) {
+
+
+    const colorsDebug = {}
+
+    colorsDebug["colors"] = colors;
+    console.log(JSON.stringify(colorsDebug));
+
 
     const animation = useSpring({ opacity: 1, from: { opacity: 0 } })
 

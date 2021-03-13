@@ -56,6 +56,37 @@ const StyledColorDisplay = styled.div`
   }
   cursor: pointer;
 `
+const StyledColorList = styled.div`
+background-color: ${(props) => props.color.hex};
+  padding: 0.5em;
+  border: 0px solid ${(props) => props.color.isDark ? "white" : "black"};
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  font-weight: bold;
+  color:  ${(props) => props.color.isDark ? "white" : "black"};
+  margin-right: 1em;
+  height: 30px;
+  align-items: center;
+width: 90px;
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+    min-width: 29%;
+    margin-right: 0em;
+
+  }
+
+  cursor: pointer;
+
+
+
+
+
+  border-radius: 10px;
+
+
+
+
+`
 
 const StyledButton = styled.button`
   background: none;
@@ -164,9 +195,10 @@ canvas {
   width: 100%;
   height: 95%;
   overflow-x:hidden;
+  display: ${(props) => props.imageUrl ? "block" : "none"}
 
 
 `
 
 
-export { Canvas, ToastWrapper, PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
+export { StyledColorList, Canvas, ToastWrapper, PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
