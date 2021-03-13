@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { Container, InfoBox, Canvas } from "./components/Styles"
+import React, { useState } from "react"
+import { Container, Canvas } from "./components/Styles"
 import ColorDisplay from "./components/ColorDisplay"
 import Input from "./components/Input"
 import { usePalette } from "./components/PaletteBuilder"
 
 import { Clublist } from "./components/Clublist"
-
+import { Info } from "./components/Info"
 
 function App() {
 
@@ -28,18 +28,12 @@ function App() {
       <h1>Color Picker</h1>
       <Input imageUrl={imageUrl} setImageUrl={setImageUrl} setIsLoading={setIsLoading} />
       {isLoading && <div>Loading... </div>}
-      {!imageUrl && !isLoading && <InfoBox>
-        <p>Do you want see the color palette of your own picture / logo? Just add the link above!</p>
-        <p>Images that don't have <strong> 'Access-Control-Allow-Origin' </strong> headers might not be supported (yet)</p>
 
-      </InfoBox>}
+      {!imageUrl && !isLoading && <Info />}
       <Canvas imageUrl={imageUrl} >
         <canvas id="myCanvas" width="800" height="400"></canvas>
       </Canvas>
       { pixels.length > 0 && <ColorDisplay imageUrl={imageUrl} colors={pixels} showPercent={showPercent} setShowPercent={setShowPercent} />}
-
-
-
 
       <Clublist />
     </Container >
