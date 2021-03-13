@@ -10,7 +10,7 @@ import { Info } from "./components/Info"
 function App() {
 
   const [pixels, setPixels] = useState([])
-  const [imageUrl, setImageUrl] = useState("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Boca_Juniors_logo18.svg/1200px-Boca_Juniors_logo18.svg.png");
+  const [imageUrl, setImageUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPercent, setShowPercent] = useState(false);
 
