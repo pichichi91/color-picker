@@ -67,9 +67,10 @@ const Clublist = () => {
 }
 
 const ListingHeader = styled.h2`
-font-size: 2.5em;
-text-align: left;
-margin-left: 0.5em;
+font-size: 4em;
+    margin-left: 0.5em;
+    border-bottom: 1px solid;
+    padding-bottom: 0.5em;
 
 
 `
@@ -85,13 +86,22 @@ margin-bottom: 2em;
 const StyledClubRow = styled.div`
 display: flex;
 margin: 0 1em;
-border-bottom: 5px solid #a9a9a929;
+border-bottom: 15px solid #a9a9a90d;
 padding: 4em 0;
 justify-content: space-between;
+
+:last-of-type {
+    border: none;
+}
+
+
 `
 const ClubTitle = styled.div`
-font-weight: 500;
-font-size: 1.5em
+div {
+    font-weight: 600;
+    font-size: 1.5em;
+font-weight: strong;
+}
 @media screen and (max-width: 768px) {
     justify-content: space-between;
 

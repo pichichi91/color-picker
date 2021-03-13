@@ -12,10 +12,12 @@ const StyledColorWrapper = styled.div`
   width: 80%;
   flex-wrap: wrap;
   flex-direction: row;
-  padding-top: 2em;
-  margin-top: 2em;
-  border-top: 10px solid #8080802e;
-  border-bottom: 10px solid #8080802e;
+  padding-top: 6em;
+  padding-bottom: 4em;
+
+  margin-top: 4em;
+  border-top: 15px solid #a9a9a914;
+  border-bottom: 15px solid #a9a9a914;
   justify-content: flex-start;
     @media screen and (max-width: 768px) {
     width: 90%;

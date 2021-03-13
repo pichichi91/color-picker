@@ -41,7 +41,6 @@ const Clubcolors = (colors) => {
 
 const ColorBox = styled.div`
 
-    margin-top: 1em;
     width: 60%;
     display: flex;
     flex-wrap: wrap;

@@ -88,8 +88,8 @@ const usePalette = (setPixels, imageUrl, setIsLoading) => {
         setPixels([])
 
         const canvas = document.getElementById("myCanvas");
-        canvas.width = window.innerWidth * 0.6;
-        canvas.height = window.innerHeight * 0.6;
+        canvas.width = window.innerWidth * 0.4;
+        canvas.height = window.innerHeight * 0.4;
         const context = canvas.getContext('2d');
         const image = document.querySelector('#logo')
         context.clearRect(0, 0, canvas.width, canvas.height);
