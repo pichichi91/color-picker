@@ -14,14 +14,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPercent, setShowPercent] = useState(false);
 
-
-
-
-
   usePalette(setPixels, imageUrl, setIsLoading)
-
-
-
 
   return (
     <Container>
