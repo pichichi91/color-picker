@@ -90,6 +90,15 @@ margin-bottom: 2em;
 
 const LogoWrapper = styled.div`
 display: flex
+@media screen and (max-width: 768px) {
+display: block;
+img {
+    align-self: center;
+}
+}
+
+
+
 
 `
 
@@ -114,6 +123,8 @@ font-weight: strong;
 }
 @media screen and (max-width: 768px) {
     justify-content: space-between;
+    max-width: 50%;
+    text-align: left;
 
 
 `
