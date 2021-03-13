@@ -7,7 +7,7 @@ const Clublist = () => {
     const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
 
     const query = `{
-    clubcolorsCollection {
+    clubsCollection {
       items {
         name
         colors
@@ -35,10 +35,11 @@ const Clublist = () => {
                     console.error(errors);
                 }
 
-                const colors = data.clubcolorsCollection.items;
-                console.log("🚀 ~ file: ClubList.js ~ line 39 ~ .then ~ colors", colors)
+                if (data) {
+                    const colors = data.clubsCollection.items;
 
-                setColors(colors);
+                    setColors(colors);
+                }
             });
         // eslint-disable-next-line
     }, [])

@@ -26,17 +26,14 @@ const UpdateButton = ({ imageUrl, pixels }) => {
 
 
         const environment = "master"
-        const contentType = "clubcolors"
+        const contentType = "clubs"
 
         const client = createClient({
             accessToken: accessToken
         })
 
-        console.log(pixels);
         const colors = {}
         colors["colors"] = pixels;
-        console.log(colors);
-        console.log(imageUrl);
 
         client.getSpace(spaceId)
             .then((space) => space.getEnvironment(environment))
@@ -48,7 +45,7 @@ const UpdateButton = ({ imageUrl, pixels }) => {
                     colors: {
                         "en-US": colors
                     },
-                    lastModified: {
+                    modified: {
                         "en-US": lastModified
                     },
                     url: {
@@ -57,7 +54,6 @@ const UpdateButton = ({ imageUrl, pixels }) => {
                 }
             }))
             .then((entry) => {
-                console.log(entry)
                 toast(<ToastMessage club={clubName} />, {
                     position: "bottom-center",
                     autoClose: 5500,
