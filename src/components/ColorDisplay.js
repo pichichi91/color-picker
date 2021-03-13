@@ -8,12 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function ColorDisplay({ colors }) {
 
 
-    const colorsDebug = {}
-
-    colorsDebug["colors"] = colors;
-    console.log(JSON.stringify(colorsDebug));
-
-
     const animation = useSpring({ opacity: 1, from: { opacity: 0 } })
 
     const ToastMessage = ({ closeToast, toastProps, color }) => (
@@ -58,11 +52,11 @@ export default function ColorDisplay({ colors }) {
                                     </StyledColorDisplay>
                                 )
                             })}
+                            <Info >  ... click on the color to copy it to the clipboard </Info >
 
                         </StyledColorWrapper>
 
                     </StyledColorBox>
-                    <Info >  ... click on the color to copy it to the clipboard </Info >
                 </div>
             </animated.div>
             <ToastWrapper>

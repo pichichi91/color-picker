@@ -13,15 +13,15 @@ const StyledColorWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   padding-top: 6em;
-  padding-bottom: 4em;
 
   margin-top: 4em;
   border-top: 15px solid #a9a9a914;
-  border-bottom: 15px solid #a9a9a914;
   justify-content: flex-start;
     @media screen and (max-width: 768px) {
     width: 90%;
     flex-direction: column;
+    align-items: center;
+
   }
 
 
@@ -74,7 +74,6 @@ width: 90px;
     max-width: 100%;
     min-width: 29%;
     margin-right: 0em;
-
   }
 
   cursor: pointer;

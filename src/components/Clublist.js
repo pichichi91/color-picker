@@ -54,7 +54,11 @@ const Clublist = () => {
             {colors.map((club) => {
                 return (
                     <StyledClubRow>
-                        <ClubTitle> <div>{club.name}</div><Clublogo src={club.url} /></ClubTitle>
+                        <ClubTitle> <div>{club.name}</div>
+                            <LogoWrapper>
+                                <Clublogo src={club.url} />
+                            </LogoWrapper>
+                        </ClubTitle>
 
                         <Clubcolors colors={club.colors} />
                     </StyledClubRow>
@@ -83,6 +87,12 @@ margin-bottom: 2em;
     width: 90%;
 
 `
+
+const LogoWrapper = styled.div`
+display: flex
+
+`
+
 const StyledClubRow = styled.div`
 display: flex;
 margin: 0 1em;

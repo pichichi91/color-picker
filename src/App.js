@@ -3,7 +3,7 @@ import { Container, Canvas } from "./components/Styles"
 import ColorDisplay from "./components/ColorDisplay"
 import Input from "./components/Input"
 import { usePalette } from "./components/PaletteBuilder"
-
+import { UpdateButton } from "./components/UpdateButton"
 import { Clublist } from "./components/Clublist"
 import { Info } from "./components/Info"
 
@@ -34,6 +34,7 @@ function App() {
         <canvas id="myCanvas" width="800" height="400"></canvas>
       </Canvas>
       { pixels.length > 0 && <ColorDisplay imageUrl={imageUrl} colors={pixels} showPercent={showPercent} setShowPercent={setShowPercent} />}
+      { pixels.length > 0 && imageUrl && <UpdateButton imageUrl={imageUrl} pixels={pixels} />}
 
       <Clublist />
     </Container >
