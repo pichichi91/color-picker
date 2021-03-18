@@ -66,7 +66,7 @@ const calculateResults = (pixels, width, pixelCounter) => {
 const changeImage = (context, canvas, pixels) => {
     console.log("🚀 ~ file: PaletteBuilder.js ~ line 52 ~ changeImage ~ pixels", pixels[0])
 
-    const mainColor = pixels[0];
+    const mainColor = pixels[0].hex === "#FFFFFF" && pixels.length > 1 ? pixels[1] : pixels[0];
     const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
     const data = imageData.data;
     for (var i = 0; i < data.length; i += 4) {
