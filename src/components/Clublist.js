@@ -93,6 +93,8 @@ const LogoWrapper = styled.div`
 display: flex;
 @media screen and (max-width: 768px) {
 display: block;
+justify-content: space-around;
+
 img {
     align-self: center;
 }
@@ -126,6 +128,10 @@ font-weight: strong;
     justify-content: space-between;
     max-width: 50%;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 
 
 `

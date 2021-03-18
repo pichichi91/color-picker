@@ -16,7 +16,7 @@ const StyledColorWrapper = styled.div`
 
   margin-top: 4em;
   border-top: 15px solid #a9a9a914;
-  justify-content: flex-start;
+  justify-content: center;
     @media screen and (max-width: 768px) {
     width: 90%;
     flex-direction: column;
@@ -118,7 +118,7 @@ margin-top: 1em;
 font-weight: bold;
 color: grey;
 margin-bottom: 1em;
-
+flex-basis: 100%;
 `
 
 const StyledForm = styled.form`
@@ -201,5 +201,32 @@ canvas {
 
 `
 
+const ToggleButton = styled.button`
+    background-color: #0000001f;
+    padding: 0.5em;
+    border: 0px solid white;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+    margin-right: 1em;
 
-export { StyledColorList, Canvas, ToastWrapper, PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };
+    align-items: center;
+    width: 300px;
+    cursor: pointer;
+    box-shadow: 6px 6px 0px 0px #000000ab;
+    border-radius: 2px;
+    transition: all 0.2s ease-out;
+:focus{
+    outline: none;
+}
+
+:hover {
+  box-shadow: 15px 15px 0px 0px #000000ab;
+
+}
+
+`
+
+
+export { ToggleButton, StyledColorList, Canvas, ToastWrapper, PercentageBox, InfoBox, LoadedImage, StyledInput, StyledForm, StyledColorBox, StyledColorWrapper, StyledColorDisplay, StyledButton, Container, Info };

@@ -142,10 +142,15 @@ const StyledButton = styled.button`
     cursor: pointer;
     box-shadow: 6px 6px 0px 0px #000000ab;
     border-radius: 2px;
+    transition: all 0.2s ease-out;
 :focus{
     outline: none;
 }
 
+:hover {
+  box-shadow: 15px 15px 0px 0px #000000ab;
+
+}
 `
 
 

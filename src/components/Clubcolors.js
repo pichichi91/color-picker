@@ -24,7 +24,6 @@ const onClickColor = (event) => {
 }
 
 const Clubcolors = (colors) => {
-    console.log(colors.colors.colors);
     return (
         <ColorBox >
             {colors.colors.colors && colors.colors.colors.map((colorItem) => {
@@ -53,4 +52,4 @@ const ColorBox = styled.div`
 
 `
 
-export { Clubcolors }; 
+export { Clubcolors };

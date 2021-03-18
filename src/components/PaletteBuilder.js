@@ -24,6 +24,16 @@ const isDark = (red, green, blue) => {
     return luma < MAX_LUMA_LIMT;
 }
 
+const comparePixels = (a, b) => {
+    if (parseInt(a.percentage) < parseInt(b.percentage)) {
+        return 1;
+    }
+    if (parseInt(a.percentage) > parseInt(b.percentage)) {
+        return -1;
+    }
+    return 0;
+}
+
 const calculateResults = (pixels, width, pixelCounter) => {
     const reducedMap = pixels.reduce(function (element, pixel) {
         const item = pixel.hash
@@ -40,20 +50,40 @@ const calculateResults = (pixels, width, pixelCounter) => {
             const [red, green, blue] = key.split("-")
             const heximalCode = RGBToHex(red, green, blue)
             const percentage = ((100 / pixelCounter) * count).toFixed(2)
-            results.push({ hex: heximalCode, isDark: isDark(red, green, blue), percentage: percentage })
+            results.push({ hex: heximalCode, isDark: isDark(red, green, blue), red: red, green: green, blue: blue, percentage: percentage })
 
         }
     }
+
+
+
+    results.sort(comparePixels);
+
     return results
 
 }
 
+const changeImage = (context, canvas, pixels) => {
+    console.log("🚀 ~ file: PaletteBuilder.js ~ line 52 ~ changeImage ~ pixels", pixels[0])
 
+    const mainColor = pixels[0];
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    const data = imageData.data;
+    for (var i = 0; i < data.length; i += 4) {
+        data[i] = mainColor.red;     // red
+        data[i + 1] = mainColor.green; // green
+        data[i + 2] = mainColor.blue; // blue
+    }
+    context.putImageData(imageData, 0, 0);
+}
 
-const loopOverPixels = (width, height, context) => {
+const loopOverPixels = (canvas, context, showOnlyForm) => {
 
     var pixels = [];
     var pixelCounter = 0;
+
+    const width = canvas.width;
+    const height = canvas.height;
 
     for (var yAxis = 0; yAxis <= width; yAxis++) {
         for (var xAxis = 0; xAxis <= height; xAxis++) {
@@ -68,24 +98,29 @@ const loopOverPixels = (width, height, context) => {
                 pixels.push({ hash, color })
                 pixelCounter++;
 
+
             }
+
         }
 
 
     }
 
+
     const results = calculateResults(pixels, width, pixelCounter)
+
+    showOnlyForm && changeImage(context, canvas, results)
 
     return results
 
 }
 
-const usePalette = (setPixels, imageUrl, setIsLoading) => {
+const usePalette = (setPixels, imageUrl, setIsLoading, showOnlyForm) => {
+
 
 
     useEffect(() => {
 
-        setPixels([])
 
         const canvas = document.getElementById("myCanvas");
         canvas.width = window.innerWidth * 0.3;
@@ -119,7 +154,7 @@ const usePalette = (setPixels, imageUrl, setIsLoading) => {
                 context.drawImage(image, 0, 0, image.width, image.height,
                     horizontalCenterShift, verticalCenterShift, image.width * ratio, image.height * ratio);
 
-                setPixels(loopOverPixels(canvas.width, canvas.height, context))
+                setPixels(loopOverPixels(canvas, context, showOnlyForm))
 
             };
 
@@ -129,7 +164,7 @@ const usePalette = (setPixels, imageUrl, setIsLoading) => {
         setIsLoading(false)
 
         // eslint-disable-next-line
-    }, [imageUrl, setPixels])
+    }, [imageUrl, setPixels, showOnlyForm])
 
 }
 
