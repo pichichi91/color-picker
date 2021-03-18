@@ -21,6 +21,7 @@ const StyledColorWrapper = styled.div`
     width: 90%;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
 
   }
 
