@@ -24,7 +24,11 @@ const StyledColorWrapper = styled.div`
     flex-wrap: wrap;
     padding-top: 2em;
     margin-top: -2em;
-  }
+    flex-wrap: nowrap;
+    > div {
+      flex-basis: 100%;
+  }}
+  
 
 
 `
