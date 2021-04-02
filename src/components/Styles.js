@@ -22,7 +22,8 @@ const StyledColorWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-
+    padding-top: 2em;
+    margin-top: -2em;
   }
 
 
